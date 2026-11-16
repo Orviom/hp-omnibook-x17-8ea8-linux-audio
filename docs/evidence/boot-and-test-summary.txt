@@ -1,0 +1,21 @@
+Observed on the original 8EA8 test machine after a manual reboot.
+No post-boot module reload was performed. Host/user/boot-ID values omitted.
+
+acpi device:1e: SDCA function SmartAmp (type 1) at 0x1
+acpi device:20: SDCA function SmartAmp (type 1) at 0x1
+slave-tas2783 sdw:0:2:0102:0000:01:9: Found Smart Amp function at index 0
+slave-tas2783 sdw:0:2:0102:0000:01:c: Found Smart Amp function at index 0
+sof-audio-pci-intel-ptl 0000:00:1f.3: Booted firmware version: 2.14.1.1
+sof-audio-pci-intel-ptl 0000:00:1f.3: loading topology 0: intel/sof-ipc4-tplg/sof-sdca-1amp-id2.tplg
+sof-audio-pci-intel-ptl 0000:00:1f.3: loading topology 1: intel/sof-ipc4-tplg/sof-sdca-jack-id0.tplg
+sof-audio-pci-intel-ptl 0000:00:1f.3: loading topology 2: intel/sof-ipc4-tplg/sof-sdca-mic-id4.tplg
+sof-audio-pci-intel-ptl 0000:00:1f.3: loading topology 3: intel/sof-ipc4-tplg/sof-hdmi-pcm5-id5.tplg
+
+Targeted TAS2783 firmware/transfer/parity/read-error messages: 0
+SoundWire endpoints: two TAS2783 + RT712, all Attached.
+Secure Boot: enabled. Kernel: 7.0.0-43-generic.
+
+Human checks: correct speaker channels after reboot; correct cable-headphone channels; audible volume change, mute and recovery.
+All four ffplay phases: exit 0; MMAP_INTERLEAVED / S32_LE / 2 channels / 48000 Hz.
+Bluetooth: previously paired headphones connected with normal BlueZ Connect; A2DP/SBC; both isolated speech calls exit 0; correct sides and no dropouts/noise confirmed by owner. Recent WirePlumber Bluetooth transport errors: 0.
+Extended thermal/stability checks, kernel upgrades and real-system rollback: not tested.

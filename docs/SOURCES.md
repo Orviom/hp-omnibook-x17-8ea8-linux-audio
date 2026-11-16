@@ -1,0 +1,16 @@
+# Sources and attribution
+
+Source investigation on 2026-11-16; SOF PR #5904 status rechecked on 2026-11-17. The statements below distinguish external reports from this project's own tests.
+
+- [linux-firmware, TI TAS2783 firmware addition](https://kernel.googlesource.com/pub/scm/linux/kernel/git/tnguy/firmware/+/2f90f4fe5c67f51a8410907aedf911dabb7120ca), authored by Baojun Xu (Texas Instruments), committed by Josh Boyer. This is the pinned source of the two unmodified board/variant-specific files. `WHENCE` points to `LICENCE.ti-tspa`.
+- [Linux v7.0 TAS2783 SoundWire codec](https://github.com/torvalds/linux/blob/v7.0/sound/soc/codecs/tas2783-sdw.c), Texas Instruments/Niranjan H Y, Baojun Xu and Kevin Lu. Reviewed for filename generation, firmware transfer, playback gating and calibration handling. Reference source review does not establish every downstream patch in the installed Ubuntu binary.
+- [Linux v7.0 SoundWire machine helpers](https://github.com/torvalds/linux/tree/v7.0/sound/soc/sdw_utils), for routing, DAI initialization and card component metadata.
+- [alsa-project/alsa-ucm-conf TAS2783 initialization](https://github.com/alsa-project/alsa-ucm-conf/blob/master/ucm2/codecs/tas2783/init.conf) and [Speaker profile](https://github.com/alsa-project/alsa-ucm-conf/blob/master/ucm2/sof-soundwire/tas2783.conf). The inspected local distribution files reproduced the init-name mismatch; the project changes only those names.
+- [Kasey Prichard / kasemeyer, hp-omnibook-tas2783-sdw](https://github.com/kasemeyer/hp-omnibook-tas2783-sdw), inspected at tree/commit `42e61ace6153e9430b90d0ee4ec12bbf12ed00d9`. Priority reference for a different Intel Panther Lake board, 8EB4. Both source patches, installation scripts, UCM files and test account were reviewed. No code/patch from that project was copied into this installer.
+- [SOF PR #5904](https://github.com/thesofproject/linux/pull/5904), still open/unmerged when checked. Its SDCA-function fallback and 8EB4-specific ACTMCTL override are not evidence that this 8EA8 needs either change.
+- [Reference project's Ubuntu success report](https://github.com/kasemeyer/hp-omnibook-tas2783-sdw/issues/1): another owner reported working 8EB4 speakers with kernel 7.0.0-1015-oem and the two patches. That report does not test 8EA8 or establish Secure Boot support for their replacement modules.
+- [SOF issue #5732](https://github.com/thesofproject/linux/issues/5732): firmware naming, BIOS/SDCA behavior, bus timing and later race/resume reports on other HP boards. Recent comments include 8EB4 streaming/resume problems; these were considered as risks to test, not patches to apply blindly.
+- [SOF issue #5760](https://github.com/thesofproject/linux/issues/5760): Intel EliteBook SDCA/BIOS report. This machine already enumerated SmartAmp functions, so that failure was not reproduced here.
+- [sansscott/omnibook-x-flip-14-8ea1-linux-audio](https://github.com/sansscott/omnibook-x-flip-14-8ea1-linux-audio): related TAS2783/RT712 work on AMD ACP70. Its platform probing/topology changes are not applicable to this Intel SOF machine.
+
+OpenAI Codex was used for assisted diagnosis and authoring. Physical listening, lid closure/opening and the owner's direct observations are identified in TESTING.md. No external contributor has reviewed this project's scripts or endorsed this release candidate.
