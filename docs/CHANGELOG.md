@@ -30,3 +30,7 @@
 - Documented partial-hot-rebind microphone-tag loss, successful stock-module recovery, suspended-mixer read errors and calibration uncertainty.
 - Added guarded installer, pinned firmware fetch, read-only verifier and sandbox rollback tests.
 - Marked reboot/headphone/Bluetooth and extended stability checks as pending. No publication performed.
+
+## 2026-11-17 — upstream communication documentation
+
+Added verified comments on existing ALSA PR #886 and linux issue #5957, Guido Jouret attribution, maintainer/status distinctions and remaining HP tuning/calibration questions. No repair-code or installed-system changes.

@@ -35,6 +35,8 @@ ALSA had Speaker PCM 2 before any change. The card component string included `cf
 
 EFI HPSpeakerID had four attribute bytes followed by `0x30` (ASCII `0`). Upstream contains both `8EA8-0-2-*` and `8EA8-1-2-*` files. Only variant 0 was installed. Its file container label identifies the HP 17-inch stereo Sable tuning; variant 1 has a different YC label. The variants are not interchangeable merely because sizes match.
 
+Successful playback with variant 0 is empirical evidence for this unit, not vendor confirmation of HPSpeakerID mapping, thermal/protection behavior or individual calibration. These questions were [reported to the existing upstream thread](https://github.com/thesofproject/linux/issues/5957#issuecomment-6941335315). See [UPSTREAM_STATUS.md](UPSTREAM_STATUS.md).
+
 Two files were fetched from a pinned linux-firmware commit, SHA-256 checked, and their documented container lengths/block boundaries sanity-checked against the codec loader format. Each is 40,746 bytes with 52 firmware chunks. No DSP instructions were disassembled and no blob bytes were changed. Two relative aliases bridge the old driver names to the original filenames. The four UCM BootSequence names were corrected in one separately backed-up text file.
 
 Both persistent corrections were installed before the first hardware reset. This was not a controlled A/B test of each correction alone; do not claim that either alone fully repairs this installation.

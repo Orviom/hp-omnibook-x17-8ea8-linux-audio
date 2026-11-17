@@ -6,7 +6,7 @@ This community project documents a working internal-speaker repair for an HP Omn
 
 **Cable headphones and Bluetooth audio already worked before this repair.** They were retested to check for regressions. The fault addressed here was silent internal speakers.
 
-The repair uses the existing distribution kernel and signed modules. It installs two exact board/speaker-variant firmware files under the names requested by the driver and corrects four ALSA UCM control names. No kernel compilation, replacement module, BIOS change or Secure Boot change is required.
+The repair uses the existing distribution kernel and signed modules. It installs two pinned variant-0 board firmware files under the names requested by the driver and corrects four ALSA UCM control names. Playback was verified on this unit; HP/TI confirmation of the speaker-ID-to-tuning mapping remains pending. No kernel compilation, replacement module, BIOS change or Secure Boot change is required.
 
 ## Tested configuration
 
@@ -74,6 +74,8 @@ Use the timestamp directory printed during installation. Before restoring anythi
 Prefer maintained Mint/Ubuntu updates when they supply the required firmware names and UCM controls. Updates may overwrite the UCM correction or change requested firmware names. Review before reapplying. This repair has no DKMS or module ABI dependency. Recovery commands and known hot-rebind/runtime-mixer limitations are in [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md).
 
 ## Upstream, attribution and participation
+
+On 2026-11-17, additional 8EA8 hardware evidence was [posted on Guido Jouret's existing ALSA PR #886](https://github.com/alsa-project/alsa-ucm-conf/pull/886#issuecomment-6941275267), and the working local repair was [reported in the existing TAS2783 firmware thread](https://github.com/thesofproject/linux/issues/5957#issuecomment-6941335315). No duplicate PR or issue was opened. The ALSA patch is Guido's contribution. These reports are communicated, not evidence of maintainer acceptance or distribution availability. See [UPSTREAM_STATUS.md](docs/UPSTREAM_STATUS.md) for status, scope, sources and follow-up.
 
 Firmware was already upstream in [linux-firmware commit 2f90f4fe](https://kernel.googlesource.com/pub/scm/linux/kernel/git/tnguy/firmware/+/2f90f4fe5c67f51a8410907aedf911dabb7120ca). [Kasey Prichard's 8EB4 investigation](https://github.com/kasemeyer/hp-omnibook-tas2783-sdw) was a priority reference, but its kernel patches were not applied or adapted. Its [SOF PR #5904](https://github.com/thesofproject/linux/pull/5904) was open/unmerged when rechecked on 2026-11-17. No upstream patch has been submitted by this project. Full credits and Intel/AMD distinctions are in [SOURCES.md](docs/SOURCES.md).
 

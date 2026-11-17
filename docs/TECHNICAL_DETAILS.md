@@ -15,7 +15,7 @@ The signed distribution modules include `snd_sof_pci_intel_ptl`, `snd_soc_sof_sd
 | 8EA8-2-9.bin | ti/audio/tas2783/8EA8-0-2-0x9.bin | 90b6719dca3114687b3188253ee9be42629854e6490538a78918887be074aa5e |
 | 8EA8-2-C.bin | ti/audio/tas2783/8EA8-0-2-0xC.bin | a99e80ce501ddd7c172dbde4471f26428883662184fdbe9f708d4c3aa682bc56 |
 
-The tested driver derives names from PCI subsystem device, link and unique ID. It does not select this speaker variant in its generated request name. The installer therefore gates use on the verified EFI variant and provides only these two aliases. It does not create generic aliases for other boards or choose variant 1.
+The tested driver derives names from PCI subsystem device, link and unique ID. It does not select this speaker variant in its generated request name. The installer gates use on the observed HP EFI value and provides only these two aliases. This value and successful playback do not establish an HP/TI-confirmed tuning mapping or prove per-unit calibration application. It does not create generic aliases for other boards or choose variant 1.
 
 The Linux v7.0 codec source rejects hw_params while `fw_dl_success` is false. Supplying the exact file makes its normal firmware-request/transfer path available. Successful audio is real hardware evidence that the original missing-file obstacle was overcome; the driver was not instrumented to claim a byte-level transfer trace.
 
